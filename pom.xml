@@ -54,7 +54,29 @@
         <configuration>
           <useModulePath>false</useModulePath>
         </configuration>
-      </plugin>
+</plugin>
+
+<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.12</version>
+    <executions>
+        <!-- Attach JaCoCo agent when running tests -->
+        <execution>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>
+        <!-- Generate the report after tests -->
+        <execution>
+            <id>report</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 
       <!-- Create runnable JAR -->
       <plugin>
