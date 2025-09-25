@@ -60,8 +60,9 @@
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
     <version>0.8.12</version>
+
     <executions>
-        <!-- Attach JaCoCo agent to test phase -->
+        <!-- Attach JaCoCo agent during tests to collect coverage data -->
         <execution>
             <id>prepare-agent</id>
             <goals>
@@ -69,16 +70,23 @@
             </goals>
         </execution>
 
-        <!-- Generate HTML + XML reports after tests -->
+        <!-- Generate both XML and HTML reports after tests -->
         <execution>
             <id>report</id>
             <phase>verify</phase>
             <goals>
                 <goal>report</goal>
             </goals>
+            <configuration>
+                <reports>
+                    <report>xml</report>
+                    <report>html</report>
+                </reports>
+            </configuration>
         </execution>
     </executions>
 </plugin>
+
 
 
       <!-- Create runnable JAR -->
