@@ -61,19 +61,28 @@
     <artifactId>jacoco-maven-plugin</artifactId>
     <version>0.8.12</version>
     <executions>
-        <!-- Attach JaCoCo agent when running tests -->
+        <!-- 1️⃣ Attach JaCoCo agent to test phase -->
         <execution>
+            <id>prepare-agent</id>
             <goals>
                 <goal>prepare-agent</goal>
             </goals>
         </execution>
-        <!-- Generate the report after tests -->
+
+        <!-- 2️⃣ Generate the XML/HTML report after tests -->
         <execution>
             <id>report</id>
-            <phase>verify</phase>
+            <phase>verify</phase> <!-- runs after 'test' and before 'install' -->
             <goals>
                 <goal>report</goal>
             </goals>
+            <configuration>
+                <!-- Explicitly enable XML output -->
+                <reports>
+                    <report>xml</report>
+                    <report>html</report>
+                </reports>
+            </configuration>
         </execution>
     </executions>
 </plugin>
